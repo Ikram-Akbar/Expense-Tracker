@@ -5,12 +5,16 @@ function App() {
     description: "",
     date: "",
   });
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log("clicked");
+    const res = await fetch("http://localhost:5000/transaction", {
+      method: "POST",
+      body: form,
+    });
+    console.log(res);
   };
   const handleInput = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
