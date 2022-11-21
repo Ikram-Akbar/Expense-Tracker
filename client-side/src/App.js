@@ -11,7 +11,7 @@ function App() {
   };
   const handleInput = (e) => {
     console.log(e.target.value);
-    setForm({ ...form, amount: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   return (
@@ -19,18 +19,24 @@ function App() {
       <form onSubmit={onSubmitHandler}>
         <input
           type="number"
-          value={form.amount}
-          name="transaction"
-          onChange={handleInput}
           placeholder="Enter your transaction"
+          name="amount"
+          value={form.amount}
+          onChange={handleInput}
         ></input>
         <input
           type="text"
-          value={form.description}
           name="description"
           placeholder="Enter your description"
+          value={form.description}
+          onChange={handleInput}
         ></input>
-        <input type="date" value={form.date} name="date"></input>
+        <input
+          type="date"
+          name="date"
+          value={form.date}
+          onChange={handleInput}
+        ></input>
         <button type="submit">submit</button>
       </form>
     </div>
