@@ -1,8 +1,19 @@
 import express from "express";
-const app = express();
-const port = 5
-.0000;
+import mongoose from "mongoose";
 
+const app = express();
+const port = 5000;
+
+mongoose
+  .connect(
+    "mongodb+srv://ikramakbar:pppp0000@akbar-aws.frkmxdq.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    console.log("MongoDB is Connected Successfully");
+  })
+  .catch((err) => {
+    console.log("find error form : ", err);
+  });
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
